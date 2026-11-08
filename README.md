@@ -141,7 +141,6 @@ DatabaseManager/
 │   ├── bootstrap.php
 │   ├── helpers.php
 │   ├── router.php
-│   └── security.php
 │
 ├── includes/
 │   ├── header.php
@@ -188,7 +187,6 @@ DatabaseManager/
 │
 ├── tests/
 │   ├── models/
-│   └── security/
 │
 └── README.md
 ```
@@ -208,7 +206,6 @@ DatabaseManager/
 | storage/uploads | Stockage temporaire des fichiers importés |
 | storage/logs | Journaux de l'application |
 | tests/models | Tests des modèles |
-| tests/security | Tests des mécanismes de sécurité |
 
 ## 8. Organisation et stockage des bases de données
 

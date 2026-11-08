@@ -111,33 +111,6 @@ function getRoute(): array
  */
 function protectRoute(array $route): array
 {
-    $is_logged = isset($_SESSION['id']);
-    $is_admin = isset($_SESSION['role'])  && $_SESSION['role'] === 'admin';
-
-    $routes = allRoutes();
-
-    // Redirect unauthenticated users to the login page.
-    if (
-        !$is_logged
-        && !in_array($route['name'], ['login', 'register'], true)
-    ) {
-        $route = $routes['login'];
-        $route['name'] = 'login';
-    }
-
-    // Prevent authenticated users from accessing login and registration.
-    if ($is_logged && in_array($route['name'], ['login', 'register'], true)) {
-        $route = $routes['home'];
-        $route['name'] = 'home';
-    }
-
-
-    // Restrict administrator routes to administrators.
-    if (($route['admin'] ?? false) === true && !$is_admin) {
-        $route = $routes['home'];
-        $route['name'] = 'home';
-    }
-
     return $route;
 }
 

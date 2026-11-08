@@ -98,7 +98,7 @@ function redirect(string $route): never
         throw new RuntimeException('Cannot redirect: headers already sent.');
     }
 
-    header('Location: ?action=' . rawurlencode($route), true, 303);
+    header('Location: index.php?action=' . rawurlencode($route), true, 303);
 
     exit;
 }
