@@ -14,6 +14,8 @@
 // ---------------
 // MODELS
 // ---------------
+require_once MODEL_PATH . '/DatabasehModel.php';
+require_once MODEL_PATH . '/TableModel.php';
 
 // ---------------
 // CONTROLLERS
