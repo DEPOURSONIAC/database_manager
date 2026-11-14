@@ -1,7 +1,7 @@
 <main class="main">
 
   <!-- Hero Section -->
-  <section id="hero" class="hero section dark-background">
+  <section id="hero" class="hero section dark-background" style="background-image: url('assets/img/hero-bg.jpg');">
 
     <div class="container text-center" data-aos="fade-up" data-aos-delay="100">
       <h2>Database Manager</h2>
@@ -37,11 +37,7 @@
 
         <!-- Image conservée -->
         <div class="col-lg-4">
-          <img
-            src="assets/img/profile-img.jpg"
-            class="img-fluid"
-            alt="Illustration d'une base de données"
-          >
+          <img src="assets/img/profile-img.svg" class="img-fluid" alt="Illustration d'une base de données"  >
         </div>
 
         <div class="col-lg-8 content">
@@ -197,7 +193,7 @@
             <p>
               Ajoutez une nouvelle base de données SQLite à votre espace.
             </p>
-            <a href="?action=import" class="stretched-link">
+            <a href="<?= BASE_URL ?>?page=import" class="stretched-link">
               Importer une base
             </a>
           </div>
@@ -212,7 +208,7 @@
             <p>
               Accédez à la liste de vos bases enregistrées.
             </p>
-            <a href="?action=database" class="stretched-link">
+            <a href="<?= BASE_URL ?>?page=databases" class="stretched-link">
               Consulter mes bases
             </a>
           </div>
@@ -227,7 +223,7 @@
             <p>
               Découvrez les possibilités offertes par Database Manager.
             </p>
-            <a href="#features" class="stretched-link">
+            <a href="<?= BASE_URL ?>?page=about" class="stretched-link">
               Voir les fonctionnalités
             </a>
           </div>
