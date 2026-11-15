@@ -23,6 +23,14 @@ function allRoutes(): array
             ]
         ],
 
+        // About
+        'about' => [
+            'GET' => [
+                'function' => 'showAbout',
+                'params' => []
+            ]
+        ],
+
         // Database exploration
         'database' => [
             'GET' => [

@@ -193,7 +193,7 @@
             <p>
               Ajoutez une nouvelle base de données SQLite à votre espace.
             </p>
-            <a href="<?= BASE_URL ?>?page=import" class="stretched-link">
+            <a href="<?= BASE_URL ?>?action=import" class="stretched-link">
               Importer une base
             </a>
           </div>
@@ -208,7 +208,7 @@
             <p>
               Accédez à la liste de vos bases enregistrées.
             </p>
-            <a href="<?= BASE_URL ?>?page=databases" class="stretched-link">
+            <a href="<?= BASE_URL ?>?action=databases" class="stretched-link">
               Consulter mes bases
             </a>
           </div>
@@ -223,7 +223,7 @@
             <p>
               Découvrez les possibilités offertes par Database Manager.
             </p>
-            <a href="<?= BASE_URL ?>?page=about" class="stretched-link">
+            <a href="<?= BASE_URL ?>?action=about" class="stretched-link">
               Voir les fonctionnalités
             </a>
           </div>

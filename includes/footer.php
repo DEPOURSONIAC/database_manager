@@ -21,12 +21,8 @@
           <i class="bi bi-github"></i>
         </a>
 
-        <a href="#" title="Documentation">
+        <a href="<?= BASE_URL ?>?page=about" title="Documentation">
           <i class="bi bi-book"></i>
-        </a>
-
-        <a href="mailto:admin@localhost" title="Support">
-          <i class="bi bi-envelope"></i>
         </a>
 
       </div>

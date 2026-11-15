@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Database Manager - Gestion SQLite</title>
+  <title>Database Manager</title>
 
   <meta name="description" content="Application de gestion et d'exploration de bases de données SQLite.">
   <meta name="keywords" content="Database Manager, SQLite, PHP, gestion de bases de données">
@@ -57,21 +57,21 @@
           </li>
 
           <li>
-            <a href="<?= BASE_URL ?>?page=databases">
+            <a href="<?= BASE_URL ?>?action=databases">
               <i class="bi bi-database me-1"></i>
               Mes bases
             </a>
           </li>
 
           <li>
-            <a href="<?= BASE_URL ?>?page=import">
+            <a href="<?= BASE_URL ?>?action=import">
               <i class="bi bi-cloud-upload me-1"></i>
               Importer
             </a>
           </li>
 
           <li>
-            <a href="<?= BASE_URL ?>?page=about">
+            <a href="<?= BASE_URL ?>?action=about">
               <i class="bi bi-info-circle me-1"></i>
               À propos
             </a>

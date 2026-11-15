@@ -40,7 +40,7 @@ define('PUBLIC_PATH', ROOT . '/public');
 // URL
 // --------------------
 
-define('BASE_URL', 'http://localhost/siteUtilitaire/gestionnaire_bdd/public/');
+define('BASE_URL', 'http://localhost/site_utilitaire/gestionnaire_bdd/public/');
 
 // --------------------
 // STORAGE
