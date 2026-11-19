@@ -430,3 +430,31 @@ function getTableCount(string $database_name, string $table_name): int
 
     return $count;
 }
+
+/**
+ * Check whether an external database is available.
+ *
+ * @param string $database_name Name of the external database.
+ *
+ * @return bool True if the database is available, otherwise false.
+ */
+function tableModelIsDatabaseAvailable(string $database_name): bool
+{
+    $available = false;
+
+    try {
+        $db = tableModelGetConnection($database_name);
+
+        if ($db !== null) {
+            $stmt = $db->query('SELECT 1');
+
+            $available = $stmt !== false;
+
+            $db = null;
+        }
+    } catch (PDOException $e) {
+        error_log(__FUNCTION__ . '(): ' . $e->getMessage());
+    }
+
+    return $available;
+}
