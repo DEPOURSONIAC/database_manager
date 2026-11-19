@@ -14,8 +14,10 @@
 // ---------------
 // MODELS
 // ---------------
-
+require_once MODEL_PATH . '/DatabaseModel.php';
+require_once MODEL_PATH . '/TableModel.php';
 // ---------------
 // CONTROLLERS
 // ---------------
 require_once CONTROLLER_PATH . '/HomeController.php';
+require_once CONTROLLER_PATH . '/DatabaseController.php';

@@ -31,6 +31,14 @@ function allRoutes(): array
             ]
         ],
 
+        // Databases exploration, we can see their name and the number of DB
+        'databases' => [
+            'GET' => [
+                'function' => 'showDatabases',
+                'params' => []
+            ]
+        ],
+
         // Database exploration
         'database' => [
             'GET' => [
