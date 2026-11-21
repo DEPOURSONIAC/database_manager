@@ -22,3 +22,14 @@ function showDatabases(): void
         'databaseCount' => $databaseCount,
     ]);
 }
+
+
+/**
+ * Display the database exploration page.
+ *
+ * @return void
+ */
+function showDatabase(): void
+{
+    view('database/index');
+}
