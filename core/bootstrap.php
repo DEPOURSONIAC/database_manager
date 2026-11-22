@@ -21,3 +21,4 @@ require_once MODEL_PATH . '/TableModel.php';
 // ---------------
 require_once CONTROLLER_PATH . '/HomeController.php';
 require_once CONTROLLER_PATH . '/DatabaseController.php';
+require_once CONTROLLER_PATH . '/ImportController.php';
