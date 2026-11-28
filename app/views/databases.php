@@ -111,8 +111,7 @@
                         Vous n'avez pas encore enregistré de base de données.
                     </p>
 
-                    <a href="<?= BASE_URL ?>?action=import"
-                       class="btn btn-primary">
+                    <a href="<?= BASE_URL ?>?action=import" class="btn btn-primary">
                         <i class="bi bi-plus-lg me-2"></i>
                         Importer une base
                     </a>
@@ -187,17 +186,14 @@
 
                                         <?php if ($database['available']): ?>
 
-                                            <a href="<?= BASE_URL ?>?action=database&id=<?= (int) $database['id'] ?>"
-                                               class="btn btn-sm btn-outline-primary">
+                                            <a href="<?= BASE_URL ?>?action=database&id=<?= (int) $database['id'] ?>" class="btn btn-sm btn-outline-primary">
                                                 <i class="bi bi-eye me-1"></i>
                                                 Explorer
                                             </a>
 
                                         <?php else: ?>
 
-                                            <button type="button"
-                                                    class="btn btn-sm btn-outline-secondary"
-                                                    disabled>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" disabled>
                                                 <i class="bi bi-eye-slash me-1"></i>
                                                 Indisponible
                                             </button>

@@ -185,8 +185,7 @@
           </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up"
-          data-aos-delay="100">
+        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
           <div class="service-item position-relative">
             <div class="icon">
               <i class="bi bi-diagram-3 icon"></i>
@@ -199,8 +198,7 @@
           </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up"
-          data-aos-delay="200">
+        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
           <div class="service-item position-relative">
             <div class="icon">
               <i class="bi bi-funnel icon"></i>
@@ -213,8 +211,7 @@
           </div>
         </div>
 
-        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up"
-          data-aos-delay="300">
+        <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
           <div class="service-item position-relative">
             <div class="icon">
               <i class="bi bi-arrow-down-up icon"></i>
@@ -379,8 +376,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4" data-aos="fade-up"
-          data-aos-delay="100">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
           <div class="service-item position-relative">
             <div class="icon">
               <i class="bi bi-shield-lock icon"></i>
@@ -393,8 +389,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4" data-aos="fade-up"
-          data-aos-delay="200">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
           <div class="service-item position-relative">
             <div class="icon">
               <i class="bi bi-shield-check icon"></i>

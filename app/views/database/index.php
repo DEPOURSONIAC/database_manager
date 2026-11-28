@@ -16,7 +16,7 @@
             </li>
 
             <li class="breadcrumb-item active" aria-current="page">
-                Ecommerce
+                <?= htmlspecialchars($database_name, ENT_QUOTES, 'UTF-8') ?>
             </li>
         </ol>
     </nav>
@@ -27,17 +27,28 @@
 
         <div>
             <div class="d-flex align-items-center gap-2 mb-2">
+
                 <div class="rounded-3 bg-primary bg-opacity-10 p-2">
                     <i class="bi bi-database text-primary fs-4"></i>
                 </div>
 
-                <span class="badge rounded-pill text-bg-success">
-                    <i class="bi bi-check-circle me-1"></i>
-                    Disponible
-                </span>
+                <?php if ($available): ?>
+                    <span class="badge rounded-pill text-bg-success">
+                        <i class="bi bi-check-circle me-1"></i>
+                        Disponible
+                    </span>
+                <?php else: ?>
+                    <span class="badge rounded-pill text-bg-danger">
+                        <i class="bi bi-x-circle me-1"></i>
+                        Indisponible
+                    </span>
+                <?php endif; ?>
+
             </div>
 
-            <h1 class="h3 fw-bold mb-1">Ecommerce</h1>
+            <h1 class="h3 fw-bold mb-1">
+                <?= htmlspecialchars($database_name, ENT_QUOTES, 'UTF-8') ?>
+            </h1>
 
             <p class="text-muted mb-0">
                 Explorez les tables et les vues de cette base de données SQLite.
@@ -67,12 +78,15 @@
 
                     <div>
                         <p class="text-muted small mb-1">Tables</p>
-                        <h2 class="h3 fw-bold mb-0">8</h2>
+                        <h2 class="h3 fw-bold mb-0">
+                            <?= $tableCount ?>
+                        </h2>
                     </div>
 
                 </div>
             </div>
         </div>
+
 
         <!-- Views -->
         <div class="col-12 col-md-6 col-xl-4">
@@ -85,12 +99,15 @@
 
                     <div>
                         <p class="text-muted small mb-1">Vues</p>
-                        <h2 class="h3 fw-bold mb-0">2</h2>
+                        <h2 class="h3 fw-bold mb-0">
+                            <?= $viewCount ?>
+                        </h2>
                     </div>
 
                 </div>
             </div>
         </div>
+
 
         <!-- Access mode -->
         <div class="col-12 col-md-6 col-xl-4">
@@ -136,7 +153,7 @@
                         </div>
 
                         <span class="badge text-bg-light">
-                            10 objets
+                            <?= $tableCount + $viewCount ?> objets
                         </span>
 
                     </div>
@@ -145,20 +162,6 @@
 
 
                 <div class="card-body px-4">
-
-                    <!-- Search -->
-                    <div class="input-group mb-4">
-
-                        <span class="input-group-text bg-white">
-                            <i class="bi bi-search text-muted"></i>
-                        </span>
-
-                        <input type="search"
-                               class="form-control"
-                               placeholder="Rechercher une table ou une vue...">
-
-                    </div>
-
 
                     <!-- Tables -->
                     <div class="d-flex align-items-center justify-content-between mb-3">
@@ -169,7 +172,7 @@
                         </h3>
 
                         <span class="badge bg-primary bg-opacity-10 text-primary">
-                            8 tables
+                            <?= $tableCount ?> tables
                         </span>
 
                     </div>
@@ -177,158 +180,42 @@
 
                     <div class="list-group list-group-flush mb-4">
 
-                        <a href="<?= BASE_URL ?>?action=table&id=1&table=customers"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+                        <?php foreach ($tables as $table): ?>
 
-                            <div class="d-flex align-items-center gap-3">
+                            <a href="<?= BASE_URL ?>?action=table&id=<?= $id ?>&table=<?= urlencode($table['name']) ?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 object-item">
 
-                                <div class="rounded-3 bg-primary bg-opacity-10 p-2">
-                                    <i class="bi bi-table text-primary"></i>
+                                <div class="d-flex align-items-center gap-3">
+
+                                    <div class="rounded-3 bg-primary bg-opacity-10 p-2">
+                                        <i class="bi bi-table text-primary"></i>
+                                    </div>
+
+                                    <div>
+                                        <span class="fw-semibold">
+                                            <?= htmlspecialchars($table['name'], ENT_QUOTES, 'UTF-8') ?>
+                                        </span>
+
+                                        <div class="small text-muted">
+                                            Table SQLite
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <div>
-                                    <span class="fw-semibold">customers</span>
-                                    <div class="small text-muted">Table SQLite</div>
-                                </div>
+                                <i class="bi bi-chevron-right text-muted"></i>
 
-                            </div>
+                            </a>
 
-                            <i class="bi bi-chevron-right text-muted"></i>
-
-                        </a>
+                        <?php endforeach; ?>
 
 
-                        <a href="<?= BASE_URL ?>?action=table&id=1&table=orders"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+                        <?php if ($tableCount === 0): ?>
 
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="rounded-3 bg-primary bg-opacity-10 p-2">
-                                    <i class="bi bi-table text-primary"></i>
-                                </div>
+                            <p class="text-muted small">
+                                Aucune table disponible dans cette base de données.
+                            </p>
 
-                                <div>
-                                    <span class="fw-semibold">orders</span>
-                                    <div class="small text-muted">Table SQLite</div>
-                                </div>
-                            </div>
-
-                            <i class="bi bi-chevron-right text-muted"></i>
-
-                        </a>
-
-
-                        <a href="<?= BASE_URL ?>?action=table&id=1&table=products"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="rounded-3 bg-primary bg-opacity-10 p-2">
-                                    <i class="bi bi-table text-primary"></i>
-                                </div>
-
-                                <div>
-                                    <span class="fw-semibold">products</span>
-                                    <div class="small text-muted">Table SQLite</div>
-                                </div>
-                            </div>
-
-                            <i class="bi bi-chevron-right text-muted"></i>
-
-                        </a>
-
-
-                        <a href="<?= BASE_URL ?>?action=table&id=1&table=categories"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="rounded-3 bg-primary bg-opacity-10 p-2">
-                                    <i class="bi bi-table text-primary"></i>
-                                </div>
-
-                                <div>
-                                    <span class="fw-semibold">categories</span>
-                                    <div class="small text-muted">Table SQLite</div>
-                                </div>
-                            </div>
-
-                            <i class="bi bi-chevron-right text-muted"></i>
-
-                        </a>
-
-
-                        <a href="<?= BASE_URL ?>?action=table&id=1&table=order_items"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="rounded-3 bg-primary bg-opacity-10 p-2">
-                                    <i class="bi bi-table text-primary"></i>
-                                </div>
-
-                                <div>
-                                    <span class="fw-semibold">order_items</span>
-                                    <div class="small text-muted">Table SQLite</div>
-                                </div>
-                            </div>
-
-                            <i class="bi bi-chevron-right text-muted"></i>
-
-                        </a>
-
-
-                        <a href="<?= BASE_URL ?>?action=table&id=1&table=payments"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="rounded-3 bg-primary bg-opacity-10 p-2">
-                                    <i class="bi bi-table text-primary"></i>
-                                </div>
-
-                                <div>
-                                    <span class="fw-semibold">payments</span>
-                                    <div class="small text-muted">Table SQLite</div>
-                                </div>
-                            </div>
-
-                            <i class="bi bi-chevron-right text-muted"></i>
-
-                        </a>
-
-
-                        <a href="<?= BASE_URL ?>?action=table&id=1&table=suppliers"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="rounded-3 bg-primary bg-opacity-10 p-2">
-                                    <i class="bi bi-table text-primary"></i>
-                                </div>
-
-                                <div>
-                                    <span class="fw-semibold">suppliers</span>
-                                    <div class="small text-muted">Table SQLite</div>
-                                </div>
-                            </div>
-
-                            <i class="bi bi-chevron-right text-muted"></i>
-
-                        </a>
-
-
-                        <a href="<?= BASE_URL ?>?action=table&id=1&table=reviews"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
-
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="rounded-3 bg-primary bg-opacity-10 p-2">
-                                    <i class="bi bi-table text-primary"></i>
-                                </div>
-
-                                <div>
-                                    <span class="fw-semibold">reviews</span>
-                                    <div class="small text-muted">Table SQLite</div>
-                                </div>
-                            </div>
-
-                            <i class="bi bi-chevron-right text-muted"></i>
-
-                        </a>
+                        <?php endif; ?>
 
                     </div>
 
@@ -342,7 +229,7 @@
                         </h3>
 
                         <span class="badge bg-info bg-opacity-10 text-info">
-                            2 vues
+                            <?= $viewCount ?> vues
                         </span>
 
                     </div>
@@ -350,46 +237,42 @@
 
                     <div class="list-group list-group-flush">
 
-                        <a href="<?= BASE_URL ?>?action=table&id=1&table=customer_orders"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+                        <?php foreach ($views as $view): ?>
 
-                            <div class="d-flex align-items-center gap-3">
+                            <a href="<?= BASE_URL ?>?action=table&id=<?= $id ?>&table=<?= urlencode($view['name']) ?>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3 object-item">
 
-                                <div class="rounded-3 bg-info bg-opacity-10 p-2">
-                                    <i class="bi bi-eye text-info"></i>
+                                <div class="d-flex align-items-center gap-3">
+
+                                    <div class="rounded-3 bg-info bg-opacity-10 p-2">
+                                        <i class="bi bi-eye text-info"></i>
+                                    </div>
+
+                                    <div>
+                                        <span class="fw-semibold">
+                                            <?= htmlspecialchars($view['name'], ENT_QUOTES, 'UTF-8') ?>
+                                        </span>
+
+                                        <div class="small text-muted">
+                                            Vue SQLite
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <div>
-                                    <span class="fw-semibold">customer_orders</span>
-                                    <div class="small text-muted">Vue SQLite</div>
-                                </div>
+                                <i class="bi bi-chevron-right text-muted"></i>
 
-                            </div>
+                            </a>
 
-                            <i class="bi bi-chevron-right text-muted"></i>
-
-                        </a>
+                        <?php endforeach; ?>
 
 
-                        <a href="<?= BASE_URL ?>?action=table&id=1&table=product_statistics"
-                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+                        <?php if ($viewCount === 0): ?>
 
-                            <div class="d-flex align-items-center gap-3">
+                            <p class="text-muted small">
+                                Aucune vue disponible dans cette base de données.
+                            </p>
 
-                                <div class="rounded-3 bg-info bg-opacity-10 p-2">
-                                    <i class="bi bi-eye text-info"></i>
-                                </div>
-
-                                <div>
-                                    <span class="fw-semibold">product_statistics</span>
-                                    <div class="small text-muted">Vue SQLite</div>
-                                </div>
-
-                            </div>
-
-                            <i class="bi bi-chevron-right text-muted"></i>
-
-                        </a>
+                        <?php endif; ?>
 
                     </div>
 
@@ -417,12 +300,16 @@
 
                     <div class="d-flex justify-content-between py-3 border-bottom">
                         <span class="text-muted">Nom</span>
-                        <span class="fw-semibold">ecommerce</span>
+                        <span class="fw-semibold">
+                            <?= htmlspecialchars($database_name, ENT_QUOTES, 'UTF-8') ?>
+                        </span>
                     </div>
 
                     <div class="d-flex justify-content-between py-3 border-bottom">
                         <span class="text-muted">Identifiant</span>
-                        <span class="fw-semibold">#1</span>
+                        <span class="fw-semibold">
+                            #<?= $id ?>
+                        </span>
                     </div>
 
                     <div class="d-flex justify-content-between py-3 border-bottom">
@@ -432,17 +319,16 @@
 
                     <div class="d-flex justify-content-between py-3 border-bottom">
                         <span class="text-muted">Fichier</span>
-                        <span class="fw-semibold">ecommerce.db</span>
-                    </div>
-
-                    <div class="d-flex justify-content-between py-3 border-bottom">
-                        <span class="text-muted">Répertoire</span>
-                        <span class="fw-semibold">ecommerce/</span>
+                        <span class="fw-semibold">
+                            <?= htmlspecialchars($database_name . '.db', ENT_QUOTES, 'UTF-8') ?>
+                        </span>
                     </div>
 
                     <div class="d-flex justify-content-between py-3">
-                        <span class="text-muted">Enregistrée le</span>
-                        <span class="fw-semibold">21/11/2026</span>
+                        <span class="text-muted">Répertoire</span>
+                        <span class="fw-semibold">
+                            <?= htmlspecialchars($database_name . '/', ENT_QUOTES, 'UTF-8') ?>
+                        </span>
                     </div>
 
                 </div>
@@ -456,6 +342,7 @@
                 <div class="card-body p-4">
 
                     <div class="d-flex align-items-center gap-2 mb-3">
+
                         <div class="rounded-3 bg-success bg-opacity-10 p-2">
                             <i class="bi bi-shield-lock fs-4 text-success"></i>
                         </div>
@@ -463,6 +350,7 @@
                         <h2 class="h6 fw-bold mb-0">
                             Protection des données
                         </h2>
+
                     </div>
 
                     <p class="text-muted small mb-3">
@@ -483,3 +371,24 @@
     </div>
 
 </main>
+
+
+<!-- Search functionality -->
+<script>
+    const searchInput = document.getElementById('objectSearch');
+    const objectItems = document.querySelectorAll('.object-item');
+
+    searchInput.addEventListener('input', function () {
+        const searchValue = this.value.toLowerCase();
+
+        objectItems.forEach(function (item) {
+            const objectName = item.textContent.toLowerCase();
+
+            if (objectName.includes(searchValue)) {
+                item.classList.remove('d-none');
+            } else {
+                item.classList.add('d-none');
+            }
+        });
+    });
+</script>
