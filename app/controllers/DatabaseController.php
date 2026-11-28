@@ -24,12 +24,44 @@ function showDatabases(): void
 }
 
 
-/**
- * Display the database exploration page.
- *
- * @return void
- */
-function showDatabase(): void
+function showDatabase(int $id): void
 {
-    view('database/index');
+    $database_report = getDatabaseById($id);
+
+    $database_name = $database_report['name'];
+
+    $tables = [];
+    $views = [];
+    $tableCount = 0;
+    $viewCount = 0;
+
+    $available = false ;
+
+    if ($database_name !== null) {
+        $available = true;
+        $objects = getTablesAndViews($database_name);
+
+        foreach ($objects as $object) {
+            if ($object['type'] === 'table') {
+                $tables[] = $object;
+            } elseif ($object['type'] === 'view') {
+                $views[] = $object;
+            }
+        }
+
+        $tableCount = count($tables);
+        $viewCount = count($views);
+    }
+
+    view('database/index', [
+        'database_name' => $database_name,
+        'tables' => $tables,
+        'views' => $views,
+        'tableCount' => $tableCount,
+        'viewCount' => $viewCount,
+        'id' => $id,
+        'available' => $available,
+        
+        
+    ]);
 }
